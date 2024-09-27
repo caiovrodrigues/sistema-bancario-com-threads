@@ -1,31 +1,60 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
 
+    private static final Integer QTD_LOJAS = 2;
+    private static final Integer QTD_FUNCIONARIOS = 4;
+
     public static void main(String[] args) throws Exception{
 
-        Funcionario funcionario = new Funcionario("Funcionario 1");
-        funcionario.start();
+        List<Funcionario> funcionarios = instanciaListaFuncionarios(QTD_FUNCIONARIOS);
+        funcionarios.forEach(funcionario -> funcionario.start());
 
-        Loja supermarket = new Loja("SUPERMARKET", funcionario);
+        List<Loja> lojas = instanciaListaLojas(QTD_LOJAS, funcionarios);
+//        lojas.forEach(System.out::println);
 
-        Cliente[] clientes = new Cliente[1];
+        Cliente[] clientes = new Cliente[10];
         for (int i = 0; i < clientes.length; i++) {
-            clientes[i] = new Cliente(supermarket);
+            clientes[i] = new Cliente("Cliente " + (i + 1), lojas);
+            clientes[i].start();
         }
 
-        for (Cliente cliente : clientes) {
-            cliente.start();
+        for (int i = 0; i < clientes.length; i++) {
+            clientes[i].join();
         }
 
-        for (Cliente cliente : clientes) {
-            cliente.join();
-        }
+        System.out.printf("%n%n-----------------------FUNCIONÁRIOS-----------------------%n%n");
+        System.out.println("%-20s%-27s%-30s%-13s".formatted("NOME", "SALDO (CONTA SALÁRIO) ", "SALDO (CONTA INVESTIMENTO)", "TOTAL"));
+        funcionarios.forEach(System.out::println);
 
-        System.out.println(supermarket);
+        System.out.printf("%n----------------------------LOJAS----------------------------%n%n");
+        System.out.println("%-20s%-27s%-13s".formatted("NOME", "SALDO", "FUNCIONÁRIOS"));
+        lojas.forEach(System.out::println);
+
+        System.out.printf("%n---------------------------CLIENTES---------------------------%n%n");
+        System.out.println("%-20s%-27s".formatted("NOME", "SALDO (CONTA SALÁRIO)"));
         Arrays.stream(clientes).forEach(System.out::println);
-
     }
+
+    private static List<Funcionario> instanciaListaFuncionarios(int qtdFuncionarios){
+        return IntStream.rangeClosed(1, qtdFuncionarios).mapToObj(numero -> new Funcionario("Funcionário " + numero)).toList();
+    }
+
+    private static List<Loja> instanciaListaLojas(int qtdLojas, List<Funcionario> funcionarios){
+        List<Loja> lojas = new ArrayList<>();
+        int qtdFuncionariosPorLoja = funcionarios.size() / qtdLojas;
+        for (int i = 0; i < funcionarios.size();) {
+            int inicioSubLista = i;
+            i = i + qtdFuncionariosPorLoja;
+            Loja loja = new Loja("Loja " + (lojas.size() + 1), funcionarios.subList(inicioSubLista, i));
+            lojas.add(loja);
+        }
+        return lojas;
+    }
+
 }
