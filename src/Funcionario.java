@@ -46,10 +46,6 @@ public class Funcionario extends Thread{
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public Double getSaldo() {
         return contaSalario.getSaldo() + contaInvestimento.getSaldo();
     }
@@ -57,10 +53,5 @@ public class Funcionario extends Thread{
     @Override
     public String toString() {
         return "%-20s%-27s%-30s%-13s%n".formatted(nome, NumberFormat.getCurrencyInstance().format(contaSalario.getSaldo()), NumberFormat.getCurrencyInstance().format(contaInvestimento.getSaldo()), NumberFormat.getCurrencyInstance().format(getSaldo()));
-//        return "Funcionario{" +
-//                "nome='" + nome + '\'' +
-//                ", contaSalario=" + contaSalario +
-//                ", contaInvestimento=" + contaInvestimento +
-//                '}';
     }
 }

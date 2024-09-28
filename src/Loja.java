@@ -50,10 +50,5 @@ public class Loja {
     @Override
     public String toString() {
         return "%-20s%-27s%-13s%n".formatted(nome, NumberFormat.getCurrencyInstance().format(getSaldo()), funcionarios.stream().map(Funcionario::getNome).collect(Collectors.joining(", ")));
-//        return "Loja{" +
-//                "nome='" + nome + '\'' +
-//                ", saldo=" + NumberFormat.getCurrencyInstance().format(saldo) +
-//                ", funcionarios=" + funcionarios +
-//                '}';
     }
 }

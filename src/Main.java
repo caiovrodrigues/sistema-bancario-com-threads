@@ -3,10 +3,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
 
+    //Tempo de sleep entre uma compra e outra dos clientes (em millisegundos)
+    public static final Integer TEMPO_SLEEP_ENTRE_COMPRAS = 0;
     private static final Integer QTD_LOJAS = 2;
     private static final Integer QTD_FUNCIONARIOS = 4;
 
@@ -16,7 +16,6 @@ public class Main {
         funcionarios.forEach(funcionario -> funcionario.start());
 
         List<Loja> lojas = instanciaListaLojas(QTD_LOJAS, funcionarios);
-//        lojas.forEach(System.out::println);
 
         Cliente[] clientes = new Cliente[10];
         for (int i = 0; i < clientes.length; i++) {
@@ -37,7 +36,7 @@ public class Main {
         lojas.forEach(System.out::println);
 
         System.out.printf("%n---------------------------CLIENTES---------------------------%n%n");
-        System.out.println("%-20s%-27s".formatted("NOME", "SALDO (CONTA SALÁRIO)"));
+        System.out.println("%-20s%-27s%-15s".formatted("NOME", "SALDO (CONTA SALÁRIO)", "HISTÓRICO COMPRAS"));
         Arrays.stream(clientes).forEach(System.out::println);
     }
 
