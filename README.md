@@ -3,7 +3,7 @@
 
 Projeto feito para o trabalho individual da matéria "Programação concorrente", consiste na criação de um sistema bancário simulado, em Java 17, utilizando o conceito de multithreading para gerenciar as atividades de clientes, funcionários, lojas e o banco. Cada cliente e funcionário é representado por uma thread, com o objetivo de realizar transações de compra, pagamento de salários e investimentos de forma simultânea.
 
-Lojas tem funcionários, o saldo das lojas começa zerado e enquanto a loja não tem dinheiro para pagar seus funcionários, estes ficam esperando... simultaneamente há clientes fazendo compras nessas lojas, quando a loja consegue dinheiro suficiente, ela realiza o pagamento para um funcionário, ele é notificado do recebimento e em seguida deposita em uma conta salário e uma conta investimento. Todas as transações são feitas através de um banco, o banco a realiza de forma sincronizada e thread safe, ou seja, ele realiza uma transação por vez, assim garantindo a consistência do saldo de todas as contas de funcionário, clientes e loja. 
+Lojas tem funcionários, o saldo das lojas começa zerado e enquanto a loja não tem dinheiro para pagar seus funcionários, estes ficam esperando... simultaneamente há clientes fazendo compras nessas lojas, quando a loja consegue dinheiro suficiente, ela então realiza o pagamento para um funcionário, ele é notificado do recebimento e em seguida deposita em uma conta salário e uma conta investimento. Todas as transações são feitas através de um banco, o banco a realiza de forma sincronizada e thread safe, ou seja, ele realiza uma transação por vez, assim garantindo a consistência do saldo de todas as contas de funcionário, clientes e loja. 
 
 
 
