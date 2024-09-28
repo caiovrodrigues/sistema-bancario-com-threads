@@ -63,15 +63,7 @@ Digite o comando
 ```bash
   code .
 ```
-Assim o projeto vai abrir na sua IDE e a rode
+Sua IDE vai abrir já na pasta e então rode o projeto
 
-Ou abra direto na sua IDE de preferência e a rode
-
-
-## Features
-
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+Ou abra direto na sua IDE de preferência e rode o projeto
 
